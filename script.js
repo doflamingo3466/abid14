@@ -16,16 +16,19 @@ function showNotes() {
   );
 }
 function saveNote() {
-  let n = note.value.trim();
-  if (n) {
-    edit < 0 ? notes.push(n) : (notes[edit] = n);
-    localStorage.setItem("notes", JSON.stringify(notes));
-    note.value = "";
-    edit = -1;
-    save.innerText = "+ Save Note";
-    showNotes();
-  }
+    let n = note.value.trim();
+    message.innerText = n ? "" : "kuch likhh..........";
+
+    if (n) {
+        edit < 0 ? notes.push(n) : notes[edit] = n;
+        localStorage.setItem("notes", JSON.stringify(notes));
+        note.value = "";
+        edit = -1;
+        save.innerText = "+ Save Note";
+        showNotes();
+    }
 }
+
 showNotes();
 document.addEventListener("keydown", function(e) {
     if (e.key === "Enter") saveNote();
